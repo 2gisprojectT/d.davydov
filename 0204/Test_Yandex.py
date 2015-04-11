@@ -22,7 +22,7 @@ class Test_Yandex(TestCase):
         else:
             check = 0
         try:
-            self.assertEqual(1, check, "Невернное значение")
+            self.assertEqual(1, check, "Неверное значение")
         finally:
             driver.close()
 
@@ -38,7 +38,7 @@ class Test_Yandex(TestCase):
         title_value = driver.title
 
         try:
-            self.assertEqual("Яндекс: задан пустой поисковый запрос", title_value, "Невернное значение")
+            self.assertEqual("Яндекс: задан пустой поисковый запрос", title_value, "Неверное значение")
         finally:
             driver.close()
 
