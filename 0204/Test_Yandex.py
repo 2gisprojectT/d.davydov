@@ -17,12 +17,16 @@ class Test_Yandex(TestCase):
         element = driver.find_element_by_xpath("//button[@type='submit']")
         element.click()
         title_value = driver.title
-        if input_text in title_value:
-            check=1
-        else:
-            check = 0
+        
+        element = driver.find_element_by_class_name('input__control')
+        input_text2 ='rjynhjkmyfz'
+        element.clear()
+        element.send_keys(input_text2)
+        element.submit()
+        
         try:
-            self.assertEqual(1, check, "Неверное значение")
+            self.assertEqual(1, input_text in title_value, "Неверное значение")
+            self.assertEqual(1, "контрольная" in driver.title, "Неверное изменение раскладки")
         finally:
             driver.close()
 
