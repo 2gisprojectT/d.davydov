@@ -31,11 +31,12 @@ class Test_Leon(unittest.TestCase):
         ]
         self.l= main.Lion(self.status,self.argument,self.action,self.current_status,self.current_action,self.table_of_action,self.table_of_status,self.current_agr)
 
-    def test_sendData(self):
+    def test_correctData(self):
         self.l.sendData(self.current_agr)
         self.assertEqual(self.l.last_argument,self.current_agr,"некорретная передача")
         self.assertEqual(self.l.current_status,self.status[0],"не правильный статус!")
-
+        
+    def test_uncorrectData(self):
         self.l.sendData("funny child")
         self.assertEqual(self.l.last_argument,None,"некорректная обработка")
 
