@@ -3,6 +3,7 @@ __author__ = 'Давыдов'
 from unittest import TestCase
 from selenium import webdriver
 from page import Page
+from yandex import Search_bar
 import unittest
 
 
@@ -11,6 +12,9 @@ class SeleniumTest(TestCase):
         self.driver = webdriver.Firefox()
         self.page = Page(self.driver)
         self.page.open("http://www.yandex.ru")
+
+    def testEntering(self):
+        self.page.search_bar.get_attribute()
 
     def testTitle(self):
         self.page.set_Text("Тестирование").input()
