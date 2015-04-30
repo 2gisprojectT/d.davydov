@@ -3,7 +3,6 @@ __author__ = 'Давыдов'
 from unittest import TestCase
 from selenium import webdriver
 from page import Page
-from yandex import Search_bar
 import unittest
 
 
@@ -14,14 +13,16 @@ class SeleniumTest(TestCase):
         self.page.open("http://www.yandex.ru")
 
     def testEntering(self):
-        self.page.search_bar.get_attribute()
+        tag = self.page.search_bar.get_attribute()
+        self.page.open(tag)
+        self.assertEqual(self.driver.current_url,tag,"Неправильный переход")
 
     def testTitle(self):
-        self.page.set_Text("Тестирование").input()
+        self.page.search_bar.entering("Тестирование")
         self.assertIn('Тестирование', self.page.get_title(), "Неверное значение")
 
     def testTitle2(self):
-        self.page.set_Text("").input()
+        self.page.search_bar.entering("")
         self.assertEqual("Яндекс: задан пустой поисковый запрос",self.page.get_title(), "Неверное значение")
 
 

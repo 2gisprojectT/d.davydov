@@ -15,6 +15,4 @@ class Search_bar(BaseComponent):
 
     def get_attribute(self):
         self.driver.find_element_by_xpath("button").click()
-        tag = self.driver.find_element_by_id("tab-rasp").get_attribute('href')
-        self.driver.get(tag)
-        self.assertEqual(self.driver.current_url,tag,"Неправильный переход")
+        return self.driver.find_element_by_id("tab-rasp").get_attribute('href')

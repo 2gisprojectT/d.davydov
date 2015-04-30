@@ -1,10 +1,10 @@
 __author__ = 'Давыдов'
-from yandex import YaTest
+from yandex import Search_bar
 class Page():
     def __init__(self, driver):
         self.driver = driver
         self.driver.implicitly_wait(5)
-
+        self._search_bar = None
 
     def open(self, url):
         self.driver.get(url)
@@ -13,12 +13,11 @@ class Page():
     def get_title(self):
         return self.driver.title
 
-    def set_Text(self,text):
-        self.text_ = text
-        return self
+    @property
+    def search_bar(self):
+        if self._search_bar is None:
+            self._search_bar = Search_bar(self.driver)
 
-    def input(self):
-        self.ya_test = YaTest(self.driver)
-        self.ya_test.entering(self.text_)
+        return self._search_bar
 
 
